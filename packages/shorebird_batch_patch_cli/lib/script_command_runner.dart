@@ -33,15 +33,14 @@ class ScriptCommandRunner extends CommandRunner<int> {
 
   @override
   Future<int> run(Iterable<String> args) async {
-    logger.detail("Running with args: $args");
     if (shorebirdToken.isEmpty) {
-      logger.err('SHOREBIRD_TOKEN is not set.');
+      logger.err('SHOREBIRD_TOKEN not set.');
       return ExitCode.config.code;
     }
 
     try {
+      logger.detail("Running with args: $args");
       final topLevelResults = parse(args);
-      logger.detail("Running with args: $topLevelResults");
       await runZoned(() async => runCommand(topLevelResults));
     } on UsageException catch (e) {
       logger.err(e.message);

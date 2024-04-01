@@ -1,1 +1,3 @@
-String get shorebirdToken => const String.fromEnvironment('SHOREBIRD_TOKEN');
+import 'dart:io' as io;
+
+String get shorebirdToken => io.Platform.environment['SHOREBIRD_TOKEN'] ?? '';
