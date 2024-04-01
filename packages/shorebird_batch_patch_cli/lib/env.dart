@@ -1,3 +1,6 @@
 import 'dart:io' as io;
 
-String get shorebirdToken => io.Platform.environment['SHOREBIRD_TOKEN'] ?? '';
+const String kShorebirdTokenVarName = 'SHOREBIRD_TOKEN';
+
+String get shorebirdToken =>
+    io.Platform.environment[kShorebirdTokenVarName] ?? '';
