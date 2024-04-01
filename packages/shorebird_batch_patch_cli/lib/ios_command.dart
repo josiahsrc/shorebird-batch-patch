@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:args/command_runner.dart';
+import 'package:shorebird_batch_patch_cli/script_command.dart';
 
-class IosCommand extends Command<int> {
+class IosCommand extends ScriptCommand {
   @override
   String get description => 'Applies patches to iOS apps.';
 
@@ -10,7 +10,7 @@ class IosCommand extends Command<int> {
   String get name => 'ios';
 
   @override
-  Future<int>? run() async {
+  Future<int> run() async {
     print('Running ios command');
     return 0;
   }
