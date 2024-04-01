@@ -1,14 +1,20 @@
 name: shorebird_batch_patch_cli
-description: A sample command-line application.
+description: Automatically apply patches to relevant releases.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/josiahsrc/shorebird-batch-patch.git
+publish_to: 'none'
 
 environment:
   sdk: ^3.3.1
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  args: ^2.4.2
+  io: ^1.0.4
+  mason_logger: ^0.2.12
+  shorebird_code_push_protocol:
+    git:
+      url: git@github.com:shorebirdtech/shorebird.git
+      path: packages/shorebird_code_push_protocol
 
 dev_dependencies:
   lints: ^3.0.0

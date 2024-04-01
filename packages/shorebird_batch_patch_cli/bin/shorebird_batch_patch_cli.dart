@@ -1,5 +1,14 @@
-import 'package:shorebird_batch_patch_cli/shorebird_batch_patch_cli.dart' as shorebird_batch_patch_cli;
+import 'dart:async';
+import 'dart:io';
 
-void main(List<String> arguments) {
-  print('Hello world: ${shorebird_batch_patch_cli.calculate()}!');
+import 'package:shorebird_batch_patch_cli/script_command_runner.dart';
+
+Future<void> main(List<String> args) async {
+  final exitCode = await runZoned(() async => ScriptCommandRunner().run(args));
+  await _flushThenExit(exitCode);
+}
+
+Future<void> _flushThenExit(int status) {
+  return Future.wait<void>([stdout.close(), stderr.close()])
+      .then<void>((_) => exit(status));
 }
